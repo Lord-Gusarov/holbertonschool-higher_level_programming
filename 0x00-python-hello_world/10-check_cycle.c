@@ -9,7 +9,7 @@ int check_cycle(listint_t *list)
 {
 	listint_t *tortuga = list, *liebre = list;
 
-	while(liebre && liebre->next)
+	while (liebre && liebre->next)
 	{
 		if (tortuga == liebre)
 			return (1);
