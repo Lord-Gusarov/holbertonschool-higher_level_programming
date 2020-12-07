@@ -8,11 +8,11 @@
 int check_cycle(listint_t *list)
 {
 	size_t i = 0, size = 0;
-	unsigned int adrs_size = 100, m_size = sizeof(void *) * adrs_size;
+	unsigned int adrs_size = 151, m_size = sizeof(void *) * adrs_size;
 	listint_t **adrs = malloc(m_size);
 
 	if (list == NULL || adrs == NULL)
-		exit(98);
+		return (0);
 
 	while (list)
 	{
