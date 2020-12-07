@@ -9,12 +9,15 @@ int check_cycle(listint_t *list)
 {
 	listint_t *tortuga = list, *liebre = list;
 
+	if (!list)
+		return (0);
+
 	while (liebre && liebre->next)
 	{
-		if (tortuga == liebre)
-			return (1);
 		tortuga = tortuga->next;
 		liebre = (liebre->next)->next;
+		if (tortuga == liebre)
+			return (1);
 	}
-		return (0);
+	return (0);
 }
