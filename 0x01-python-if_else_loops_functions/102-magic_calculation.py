@@ -3,5 +3,8 @@ def magic_calculatiion(a, b, c):
     if a < b:
         return c
     if c > b:
-        return (a + b)
-    return ((a * b) - c)
+        return a + b
+    return a * b - c
+import dis
+dis.dis(magic_calculatiion)
+
