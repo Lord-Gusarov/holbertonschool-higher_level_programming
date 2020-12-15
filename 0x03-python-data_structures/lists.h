@@ -23,7 +23,7 @@ void free_listint(listint_t *head);
 
 int is_palindrome(listint_t **head);
 
-
+void add_node(listint_t **head, int n);
 int *dynamic_int_arr(int *arr, int c_size, int n_size);
 #endif /* LISTS_H */
 
