@@ -10,7 +10,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int cnt = 0, r_limit = 50, i;
+	int cnt = 0, r_limit = 150, i;
 	listint_t *trv;
 	int *rev;
 
