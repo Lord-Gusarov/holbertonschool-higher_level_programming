@@ -1,7 +1,7 @@
 #include "lists.h"
 #define IS_PALINDROME 1
 #define NOT_PALINDROME -1
-#define ARR_SIZE 10000
+#define ARR_SIZE 1000000
 
 /**
  * is_palindrome - checks if a singly linked list is a palindrome
