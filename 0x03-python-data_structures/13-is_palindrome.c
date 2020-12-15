@@ -10,59 +10,48 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int cnt = 0, r_limit = 300, i;
-	listint_t *trv;
-	int *rev;
+	listint_t *trv, *rev = NULL;
 
 	if (!head)
 		return (NOT_PALINDROME);
 	if (!*head)
 		return (IS_PALINDROME);
-	rev = dynamic_int_arr(NULL, 0, r_limit);
+
 	trv = *head;
 	while (trv)
 	{
-		rev[cnt++] = trv->n;
+		add_node(&rev, trv->n);
 		trv = trv->next;
-		if (cnt == r_limit)
-		{
-			rev = dynamic_int_arr(rev, r_limit, r_limit * 2);
-			r_limit *= 2;
-		}
 	}
 
-	for (i = cnt - 1, trv = *head; i >= 0; i--, trv = trv->next)
+	trv = *head;
+	while (trv)
 	{
-		if (trv->n != rev[i])
+		if (trv->n != rev->n)
 		{
-			free(rev);
+			free_listint(rev);
 			return (NOT_PALINDROME);
 		}
+		trv = trv->next;
+		rev = rev->next;
 	}
 
-	free(rev);
+	free_listint(rev);
 	return (IS_PALINDROME);
 }
 
 
 /**
- * dynamic_int_arr - creates or expands a dynamic int array
- * @arr: set to NULL for fully newly array, otherwise these values are copied
- * into the new one dynamic array
- * @c_size: size of the current array
- * @n_size: how many elements the new array should be able to hold
- * Return: dynamic array of @n_size
+ * add_node - adds a new node at the beggining of a list_t list
+ * @head: adress current head of the list, will be updated if new node
+ * is succesfully added at the beginning of a list
+ * @n: value for the new node
  */
-
-int *dynamic_int_arr(int *arr, int c_size, int n_size)
+void add_node(listint_t **head, int n)
 {
-	int *new = malloc(sizeof(int) * n_size), i;
+	listint_t *new = malloc(sizeof(listint_t));
 
-	if (arr == NULL)
-		return (new);
-	for (i = 0; i < c_size; i++)
-		new[i] = arr[i];
-
-	free(arr);
-	return (new);
+	new->n = n;
+	new->next = *head;
+	*head = new;
 }
