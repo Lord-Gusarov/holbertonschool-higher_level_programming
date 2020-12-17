@@ -4,7 +4,7 @@ def best_score(a_dictionary):
         return None
     bk = None
     if len(a_dictionary) > 0:
-        pairs = a_dictionary.items()
+        pairs = list(a_dictionary.items())
         bk, bv = pairs[0]
         for k, v in pairs:
             if v > bv:
