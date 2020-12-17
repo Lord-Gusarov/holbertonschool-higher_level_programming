@@ -9,4 +9,5 @@ def best_score(a_dictionary):
         for k, v in pairs:
             if v > bv:
                 bk = k
+                bv = v
     return bk
