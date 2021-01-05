@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 def add_tuple(tuple_a=(), tuple_b=()):
-    t1 = 0
-    t2 = 0
     sum = [0, 0]
     for i in range(0, 2):
         try:

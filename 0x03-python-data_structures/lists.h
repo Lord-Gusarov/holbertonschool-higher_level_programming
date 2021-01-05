@@ -25,5 +25,8 @@ int is_palindrome(listint_t **head);
 
 void add_node(listint_t **head, int n);
 int *dynamic_int_arr(int *arr, int c_size, int n_size);
+
+/*tryinf recursively*/
+int is_palindrome_helper(listint_t *h, listint_t *p_last, listint_t *forward);
 #endif /* LISTS_H */
 

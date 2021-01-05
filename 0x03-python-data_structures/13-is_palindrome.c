@@ -10,59 +10,31 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int cnt = 0, r_limit = 250, i, ii;
-	listint_t *trv;
-	int *rev;
 
 	if (!head)
 		return (NOT_PALINDROME);
 	if (!*head)
 		return (IS_PALINDROME);
-	rev = dynamic_int_arr(NULL, 0, r_limit);
-	trv = *head;
-	while (trv)
-	{
-		rev[cnt++] = trv->n;
-		trv = trv->next;
-		if (cnt == r_limit)
-		{
-			rev = dynamic_int_arr(rev, r_limit, r_limit * 2);
-			r_limit *= 2;
-		}
-	}
 
-	for (i = 0, ii = cnt - 1; i < ii; i++, ii--)
-	{
-		if (rev[i] != rev[ii])
-		{
-			free(rev);
-			return (NOT_PALINDROME);
-		}
-	}
-
-	free(rev);
-	return (IS_PALINDROME);
+	return (is_palindrome_helper(*head, *head, (*head)->next));
 }
 
 
-/**
- * dynamic_int_arr - creates or expands a dynamic int array
- * @arr: set to NULL for fully newly array, otherwise these values are copied
- * into the new one dynamic array
- * @c_size: size of the current array
- * @n_size: how many elements the new array should be able to hold
- * Return: dynamic array of @n_size
- */
-
-int *dynamic_int_arr(int *arr, int c_size, int n_size)
+int is_palindrome_helper(listint_t *h, listint_t *p_last, listint_t *forward)
 {
-	int *new = malloc(sizeof(int) * n_size), i;
+	int result;
 
-	if (arr == NULL)
-		return (new);
-	for (i = 0; i < c_size; i++)
-		new[i] = arr[i];
+	if (!h)
+		return (IS_PALINDROME);
 
-	free(arr);
-	return (new);
+	if (!forward)
+		return (h->n == p_last->n);
+
+
+	result = (is_palindrome_helper(h, forward, forward->next));
+	
+
+
+	return (is_palindrome_helper(h->next, p_last, forward) && result);
 }
+
