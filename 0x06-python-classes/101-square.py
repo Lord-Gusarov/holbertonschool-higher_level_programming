@@ -60,7 +60,6 @@ class Square:
             s = s[:-1]
         return s
 
-
     def area(self):
         """Calculates the area of the Square
 
