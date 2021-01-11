@@ -1,0 +1,142 @@
+Tests 'matrix_divided'
+======================
+
+case 1:
+	Importing the function
+	>>> f = __import__('2-matrix_divided').matrix_divided
+
+-----------------------
+case 2:
+	Correct Ouput, no special cases
+	>>> f([[5, 10, 15], [-15, -10, -5]], 5)
+	[[1.0, 2.0, 3.0], [-3.0, -2.0, -1.0]]
+
+-----------------------
+case 3:
+	Passing None as arg
+	>>> f(None, 1)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+-----------------------
+case 4:
+	Matrix contains a String
+	>>> m = [
+	...  [1, 2.5, 3],
+	...  [4, "Hey", 6]
+	... ]
+	>>> f(m, 1)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+-----------------------
+case 5:
+	Matrix contains a 'None' element
+	>>> m = [
+	...  [1, 2.5, 3],
+	...  [4, 6.5, 6],
+	...  [None, 8, 9]
+	... ]
+	>>> f(m, 1)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+-----------------------
+case 6:
+	Matrix ROWS have different size
+	>>> m = [
+	...  [1, 2.5, 3],
+	...  [4, 6.5, 6],
+	...  [-5, 8, 9, 100]
+	... ]
+	>>> f(m, -5)
+	Traceback (most recent call last):
+	...
+	TypeError: Each row of the matrix must have the same size
+
+-----------------------
+case 7:
+	Matrix ROWS have different size
+	>>> m = [
+	...  [],
+	...  [4, 6.5, 6],
+	...  [-5, 8, 9, 100]
+	... ]
+	>>> f(m, 10)
+	Traceback (most recent call last):
+	...
+	TypeError: Each row of the matrix must have the same size
+
+-----------------------
+case 8:
+	Divisor argumnet is not int nor float
+	>>> m = [
+	...  [1, 2.5, 3],
+	...  [4, -100.5, 6],
+	... ]
+	>>> f(m, None)
+	Traceback (most recent call last):
+	...
+	TypeError: div must be a number
+
+-----------------------
+case 9:
+	Divisor argument is ZERO
+	>>> m = [
+	...  [1, 2.5, 3],
+	...  [4, -100.5, 6],
+	... ]
+	>>> f(m, 0)
+	Traceback (most recent call last):
+	...
+	ZeroDivisionError: division by zero
+
+-----------------------
+case 10:
+	Divisor argument is ZERO float
+	>>> m = [
+	...  [1, 2.5, 3],
+	...  [4, -100.5, 6],
+	... ]
+	>>> f(m, 0.0)
+	Traceback (most recent call last):
+	...
+	ZeroDivisionError: division by zero
+
+-----------------------
+case 11:
+	Cheking for PRECISION when divisor is a float
+	>>> m = [
+	...  [-1, 2.5, 3],
+	...  [21, -100.5, 6],
+	... ]
+	>>> f(m, 1.333)
+	[[-0.75, 1.88, 2.25], [15.75, -75.39, 4.5]]
+
+-----------------------
+case 12:
+	Matrix has no elements
+	>>> f([[]], 1)
+	[[]]
+
+-----------------------
+case 13:
+	function called with 1 argument
+	>>> f([[15, 16]])
+	Traceback (most recent call last):
+	...
+	TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+------------------------
+case 14:
+	function called with no args
+	>>> f()
+	Traceback (most recent call last):
+	...
+	TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+-------------------------
+

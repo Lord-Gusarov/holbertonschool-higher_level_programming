@@ -1,0 +1,151 @@
+Doctest file for testing '100-matrix_mul.py'
+===========================================
+
+case 0:
+	Importing the function
+
+>>> f = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+
+-------------------------------------------
+case 1:
+	Good Input (2x2 * 2x2)
+
+>>> f([[1, 2], [3, 4]], [[1, 2], [3, 4]]) #1
+array([[ 7, 10],
+       [15, 22]])
+
+-------------------------------------------
+case 2:
+	Good Input (1x2 * 2x2)
+
+>>> f([[1, 2]], [[3, 4], [5, 6]]) #2
+array([[13, 16]])
+
+-------------------------------------------
+case 3:
+	Good Input (3x1 * 1x3)
+
+>>> f([[4], [5], [6]], [[1, 2, 3]]) #3
+array([[ 4,  8, 12],
+       [ 5, 10, 15],
+       [ 6, 12, 18]])
+
+-------------------------------------------
+case 4:
+	Bad Input (m_a arg is not a list)
+
+>>> f(111, [[1, 2, 3]]) #4
+Traceback (most recent call last):
+...
+ValueError: Scalar operands are not allowed, use '*' instead
+
+-------------------------------------------
+case 5:
+	Bad Input (m_b arg is not a list)
+
+>>> f([[1]], 111) #5
+Traceback (most recent call last):
+...
+ValueError: Scalar operands are not allowed, use '*' instead
+
+-------------------------------------------
+case 6:
+	Bad Input (m_a arg is not a list of list)
+
+>>> f(["hey there"], [[1, 2, 3]]) #6
+Traceback (most recent call last):
+...
+TypeError: invalid data type for einsum
+
+-------------------------------------------
+case 7:
+	Bad Input (m_b arg is not a list of list)
+
+>>> f([[-1, -5, 10]], ["Cool"]) #7
+Traceback (most recent call last):
+...
+ValueError: shapes (1,3) and (1,) not aligned: 3 (dim 1) != 1 (dim 0)
+
+-------------------------------------------
+case 8:
+	Bad Input (m_a ia an empty matrix)
+
+>>> f([[]], [[]]) #8
+Traceback (most recent call last):
+...
+ValueError: shapes (1,0) and (1,0) not aligned: 0 (dim 1) != 1 (dim 0)
+
+------------------------------------------
+case 9:
+	Bad Input (m_b is an empty matrix)
+
+>>> f([[-5]], [[]]) #9
+array([], shape=(1, 0), dtype=int64)
+
+-------------------------------------------
+case 10:
+	Bad Input (m_b ia an empty matrix)
+
+>>> f([[10, 15]], [[]]) #10
+Traceback (most recent call last):
+...
+ValueError: shapes (1,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)
+
+-------------------------------------------
+case 11:
+	Bad Input (m_a should contain only ints or floats)
+
+>>> f([[-5, 10, None]], [[58]]) #11
+Traceback (most recent call last):
+...
+TypeError: Object arrays are not currently supported
+
+------------------------------------------
+case 12:
+	Bad Input (m_b rows have different lengths)
+
+>>> f([[-1, -2, 3]], [[1, 3, -20, 50], [-10, 10, 5, 8], [-3, 3]]) #12
+Traceback (most recent call last):
+...
+ValueError: setting an array element with a sequence.
+
+------------------------------------------
+case 13:
+	Bad Input (m_a and m_b cant be multiplied)
+
+>>> f([[-1, -2, 3]], [[1, 3, -20, 50]]) #13
+Traceback (most recent call last):
+...
+ValueError: shapes (1,3) and (1,4) not aligned: 3 (dim 1) != 1 (dim 0)
+
+------------------------------------------
+case 14:
+	Good Input (4x4 *4x4) with negative values
+
+>>> f([[-10, 10, 5, -1], [5, 10, -5, -10], [1, -5, 10, 10], [-1, 1, 5, 10]],
+...   [[15, 10, 2, 0], [8, 0, -4, -2], [6, 4, 1, 3], [5, -10, 10, 5]]) #14
+array([[ -45,  -70,  -65,  -10],
+       [  75,  130, -135,  -85],
+       [  85,  -50,  132,   90],
+       [  73,  -90,   99,   63]])
+
+-------------------------------------------
+case 15:
+	Bad input, Missing one argument
+
+>>> f([[1, 2, 3,]]) #15
+Traceback (most recent call last):
+...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+-------------------------------------------
+case 16:
+	Bad input, Nop args
+
+>>> f() #16
+Traceback (most recent call last):
+...
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+

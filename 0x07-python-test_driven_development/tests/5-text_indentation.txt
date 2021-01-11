@@ -1,0 +1,112 @@
+This files tests the module '5-text_indentation.py'
+==================================================
+
+case 0:
+	Importing the function form the module to test
+
+	>>> f = __import__('5-text_indentation').text_indentation
+
+
+---------------------------
+case 1:
+	Proper input, single spaces and ending in an indentation char.
+
+	>>> f("Hi: My name is Gustavo. What's your name? Pleasure to meet you.")
+	Hi:
+	<BLANKLINE>
+	My name is Gustavo.
+	<BLANKLINE>
+	What's your name?
+	<BLANKLINE>
+	Pleasure to meet you.
+	<BLANKLINE>
+
+---------------------------
+case 2:
+	Extra spaces at the beggining and after indentation chars
+	and at the end of the input (should be ignored)
+
+	>>> f("   Hi: My name is Gustavo.  What's your name?Pleasure to meet you. ")
+	Hi:
+	<BLANKLINE>
+	My name is Gustavo.
+	<BLANKLINE>
+	What's your name?
+	<BLANKLINE>
+	Pleasure to meet you.
+	<BLANKLINE>
+
+---------------------------
+case 3:
+	Checking for no newline or spaces at the end
+
+	>>> f("Hi")
+	Hi
+
+---------------------------
+case 4:
+	Checking leading and trailing spaces has been ignored/ate
+
+	>>> f("  Hi: Marcus  ")
+	Hi:
+	<BLANKLINE>
+	Marcus
+
+---------------------------
+case 5:
+	Exception if arg is NoneType
+
+	>>> f(None)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+---------------------------
+case 6:
+	Exception if arg is not a string 
+
+	>>> f(["hey"])
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+---------------------------
+case 7:
+	Exception if arg is not a string 
+
+	>>> f(15)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+---------------------------
+case 8:
+	Arg is empty string
+
+	>>> f("")
+
+
+---------------------------
+case 9:
+	String has two indentation chars one after the other
+
+	>>> f("Hey:: Mundo?.")
+	Hey:
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	Mundo?
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+
+-----------------------------
+case 10:
+	Function called witthout args
+
+	>>> f()
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+-----------------------------

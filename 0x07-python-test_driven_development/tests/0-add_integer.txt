@@ -1,0 +1,92 @@
+The 'add-integer' testing file
+==========================
+
+Using 'add_integer'
+======================
+
+case 1:
+	Importing the function
+	>>> add_integer = __import__('0-add_integer').add_integer
+	
+
+---------------------------------
+case 2:
+	Zero twice
+	>>> add_integer(0, 0)
+	0
+
+---------------------------------
+case 3:
+	two negative integers
+	>>> add_integer(-2, -5)
+	-7
+
+--------------------------------
+case 4:
+	a is a negative float
+	>>> add_integer(-10.5, 8)
+	-2
+
+---------------------------------
+case 5:
+	b is a positive float
+	>>> add_integer(2, 10.96)
+	12
+
+---------------------------------
+case 6:
+	a is None
+	>>> add_integer(None, 35)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+---------------------------------
+case 7:
+	b is None
+	>>> add_integer(-15, None)
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+---------------------------------
+case 8:
+	a is a string
+	>>> add_integer("Hola", 5)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+---------------------------------
+case 9:
+	b is ommited, using default values of 98
+	>>> add_integer(2)
+	100
+
+---------------------------------
+case 10:
+	both arguments are ommited
+	>>> add_integer()
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+----------------------------------
+case 11:
+    Overflow
+	>>> type(add_integer(10e500**2, 1))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+-----------------------------------
+
+case 12:
+	float NaN
+	>>> type(add_integer(float('nan'), -2))
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
+
+-----------------------------------
+
