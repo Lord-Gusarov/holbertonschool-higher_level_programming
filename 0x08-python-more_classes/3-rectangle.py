@@ -24,7 +24,7 @@ class Rectangle:
         Returns:
             str : a string representation of a rectangle using '#'
         """
-        if self.area == 0:
+        if self.area() == 0:
             return ""
         return (('#' * self.width + '\n') * self.height)[0:-1]
 
