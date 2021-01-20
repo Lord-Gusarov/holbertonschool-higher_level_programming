@@ -73,16 +73,25 @@ TypeError: integer_validator() missing 2 required positional arguments: 'name' a
 case 7: 
 	name var is called diferrently
 
+>>> bg = BaseGeometry()
 >>> bg.integer_validator("distance", 30)
 
 -------------------------------------------------------------
 case 8:
 	Float type
-
+>>> bg = BaseGeometry()
 >>> bg.integer_validator("name", 4.5)
 Traceback (most recent call last):
 ...
 TypeError: name must be an integer
 
 --------------------------------------------------
+case 9:
+	method area()
+
+>>> bg = BaseGeometry();
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
 
