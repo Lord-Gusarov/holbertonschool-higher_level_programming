@@ -16,7 +16,6 @@ case 1:
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
 
-
 -------------------------------------------------------------
 
 case 2:
@@ -70,4 +69,20 @@ Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
+--------------------------------------------------------------
+case 7: 
+	name var is called diferrently
+
+>>> bg.integer_validator("distance", 30)
+
+-------------------------------------------------------------
+case 8:
+	Float type
+
+>>> bg.integer_validator("name", 4.5)
+Traceback (most recent call last):
+...
+TypeError: name must be an integer
+
+--------------------------------------------------
 
