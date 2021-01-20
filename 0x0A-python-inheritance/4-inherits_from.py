@@ -12,4 +12,4 @@ def inherits_from(obj, a_class):
     Retruns:
         boolean: True if the object is subclass of the specified class
     """
-    return issubclass(obj, a_class)
+    return issubclass(type(obj), a_class)
