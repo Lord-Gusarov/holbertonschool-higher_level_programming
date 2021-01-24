@@ -23,7 +23,7 @@ class Student:
          list must be retrieved.
         > Otherwise, all attributes must be retrieved
         """
-        if type(attrs) is list and all((lambda x: type(x) is str, attrs)):
+        if type(attrs) is list and all(type(x) is str for x in attrs):
             d = dict()
             for a in attrs:
                 if a in self.__dict__:
