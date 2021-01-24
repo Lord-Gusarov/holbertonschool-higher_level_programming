@@ -36,5 +36,5 @@ class Student:
         Args:
             json (dict): atrribute name with vale pair
         """
-        for k, v in json:
+        for k, v in json.items()
             self.__dict__[k] = v
