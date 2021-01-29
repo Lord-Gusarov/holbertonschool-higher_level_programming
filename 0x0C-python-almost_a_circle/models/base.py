@@ -5,6 +5,8 @@ in this project.
 """
 import json
 import csv
+import turtle
+import random
 
 
 class Base:
@@ -103,3 +105,30 @@ class Base:
 
         except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Opens a window an draws all the Rectangles and Squares
+        """
+        screen = turtle.Screen()
+        screen.bgcolor("lightcyan")
+        pen = turtle.Turtle()
+        screen.colormode(255)
+        pen.pensize(5)
+
+        for list_shapes in [list_rectangles, list_squares]:
+            for shape in list_shapes:
+                colors = (random.randint(1, 255), random.randint(1, 255),
+                          random.randint(1, 255))
+                pen.pencolor(colors)
+                pen.up()
+                pen.setx(shape.x)
+                pen.sety(shape.y)
+                pen.down()
+                for i in range(2):
+                    pen.forward(shape.width)
+                    pen.right(90)
+                    pen.forward(shape.height)
+                    pen.right(90)
+
+        screen.exitonclick()
