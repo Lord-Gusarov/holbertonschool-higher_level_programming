@@ -22,6 +22,7 @@ class TestBase(unittest.TestCase):
     def setUpClass(self):
         """Seting up the objects or instances to be tested
         """
+        Base._Base__nb_objects = 0
         self.b1 = Base()
         self.b2 = Base()
         self.b3 = Base(100)
@@ -48,3 +49,19 @@ class TestBase(unittest.TestCase):
         self.assertEqual(self.b6.id, "hey")
         self.assertEqual(self.b7.id, -6.5)
         self.assertEqual(self.b9.id, [1, 2, 3])
+
+    def test_to_json_string(self):
+        """testing to_json_string
+        """
+        self.assertEqual(Base.to_json_string(None), "[]")
+        self.assertEqual(Base.to_json_string([]), "[]")
+        self.assertEqual(Base.to_json_string([{'hey': 20}]), '[{"hey": 20}]')
+        self.assertEqual(type(Base.to_json_string([{'hey': 20}])), str)
+
+    def test_from_json_string(self):
+        """testing from json string
+        """
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string("[]"), [])
+        self.assertEqual(Base.from_json_string('[{"hey": 20}]'), [{'hey': 20}])
+        self.assertEqual(type(Base.from_json_string('[{"hey": 20}]')), list)

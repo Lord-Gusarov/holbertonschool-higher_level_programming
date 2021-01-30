@@ -15,10 +15,11 @@ class TestRectangle(unittest.TestCase):
     def setUpClass(self):
         """Seting up the objects or instances to be tested
         """
-        self.r1 = Rectangle(2, 2, 0, 0, 7)
-        self.r2 = Rectangle(6, 8, 4, 6, 100)
+        Base._Base__nb_objects = 0
+        self.r1 = Rectangle(2, 2)
+        self.r2 = Rectangle(6, 8, 4)
         self.r3 = Rectangle(300, 1, 1, 1, 200)
-        self.r4 = Rectangle(10, 5, 0, 15, 300)
+        self.r4 = Rectangle(10, 5, 0, 15)
 
     def test_pep8(self):
         """test that we comply with PEP8"""
@@ -31,10 +32,10 @@ class TestRectangle(unittest.TestCase):
     def test_id(self):
         """Test the ids
         """
-        self.assertEqual(self.r1.id, 7)
-        self.assertEqual(self.r2.id, 100)
+        self.assertEqual(self.r1.id, 1)
+        self.assertEqual(self.r2.id, 2)
         self.assertEqual(self.r3.id, 200)
-        self.assertEqual(self.r4.id, 300)
+        self.assertEqual(self.r4.id, 3)
 
     def test_get_width(self):
         """Test getter method width
@@ -42,20 +43,48 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r1.width, 2)
         self.assertEqual(self.r2.width, 6)
         self.assertEqual(self.r3.width, 300)
+        self.assertEqual(self.r4.width, 10)
 
     def test_set_width(self):
         """Test getter method width
         """
-        self.assertEqual(self.r1.width, 2)
-        self.assertEqual(self.r2.width, 6)
-        self.assertEqual(self.r3.width, 300)
-        r5 = Rectangle(1, 1)
-        with self.assertRaises(TypeError):
-            r5.width = "hey"
-        with self.assertRaises(TypeError):
-            r5.width = 6.5
-        with self.assertRaises(ValueError):
-            r5.width = 0
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r5 = Rectangle("hey", 1)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r5 = Rectangle(6.5, 2)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r5 = Rectangle(0, 10)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r5 = Rectangle(-1, 10)
+
+    def test_get_height(self):
+        """Test getter for height
+        """
+        self.assertEqual(self.r1.height, 2)
+        self.assertEqual(self.r2.height, 8)
+        self.assertEqual(self.r3.height, 1)
+        self.assertEqual(self.r4.height, 5)
+
+    def test_setter_height(self):
+        """Test setter for height
+        """
+
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r5 = Rectangle(1, "hey")
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r5 = Rectangle(10, 6.5)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r5 = Rectangle(5, 0)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r5 = Rectangle(5, -1)
+
+    def test_constructor_raiases_x_y(self):
+        """Tests contructor with invalid X or Y coordinates
+        """
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r5 = Rectangle(5, 5, -1)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r5 = Rectangle(5, 5, 10, -5)
 
     def test_area(self):
         """test area method
