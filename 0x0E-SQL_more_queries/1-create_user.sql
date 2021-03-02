@@ -3,3 +3,5 @@
 CREATE USER IF NOT EXISTS 'user_0d_1'@'localhost';
 -- Granting All privileges
 GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost';
+-- MAKING SURE PRIVILEGES ARE SET
+FLUSH PRIVILEGES;
