@@ -1,15 +1,14 @@
 #!/usr/bin/node
 
 const args = process.argv.slice(2);
-let idx, biggest, second;
+let idx, biggest;
+let second = 0;
 
-if (args.length <= 1) {
-  second = 0;
-} else {
+if (args.length > 1) {
   for (idx = 0; idx < args.length; idx++) {
     args[idx] = parseInt(args[idx]);
   }
-  biggest = second = args[0];
+  biggest = second = Math.min(...args);
 
   for (idx = 1; idx < args.length; idx++) {
     if (args[idx] > biggest) {
