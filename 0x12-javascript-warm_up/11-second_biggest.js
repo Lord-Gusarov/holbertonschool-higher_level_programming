@@ -10,8 +10,8 @@ if (args.length > 1) {
   }
   biggest = second = Math.min(...args);
 
-  for (idx = 1; idx < args.length; idx++) {
-    if (args[idx] > biggest) {
+  for (idx = 0; idx < args.length; idx++) {
+    if (args[idx] >= biggest) {
       second = biggest;
       biggest = args[idx];
     }
