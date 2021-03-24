@@ -2,9 +2,9 @@
 
 // Reverses a list without using the built-in method reverse
 exports.esrever = function (list) {
-  let rev_list = new Array();
+  const revList = [];
   for (let i = list.length; i--;) {
-    rev_list.push(list[i]);
+    revList.push(list[i]);
   }
-  return rev_list;
-}
+  return revList;
+};
