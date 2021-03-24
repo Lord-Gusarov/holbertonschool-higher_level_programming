@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-// Inherits from Rectangle class in module '4-rectangle.js'
-class Square extends require('./4-rectangle') {
+// Inherits from Square Rectangle class in module '5-square.js'
+class Square extends require('./5-square') {
   constructor (size) {
     super(size, size);
   }
