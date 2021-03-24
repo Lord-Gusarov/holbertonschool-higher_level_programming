@@ -8,13 +8,9 @@ class Square extends require('./4-rectangle') {
 
   // Prints a Square using the given char or if no char is specified
   // it defauls to the parent's class print()
-  charPrint (c) {
-    if (c !== undefined) {
-      for (let i = this.height; i--;) {
-        console.log(c.repeat(this.width));
-      }
-    } else {
-      this.print();
+  charPrint (c = 'X') {
+    for (let i = this.height; i--;) {
+      console.log(c.repeat(this.width));
     }
   }
 }
