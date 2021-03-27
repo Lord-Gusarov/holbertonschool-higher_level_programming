@@ -12,10 +12,10 @@ if __name__ == '__main__':
     cur = db.cursor()
     # Now we are ready for a Query
     cur.execute("SELECT * FROM states "
-                "WHERE name='{}' "
+                "WHERE BINARY name='{}' "
                 "ORDER BY id".format(toMatch))
     for row in cur.fetchall():
-        print("({}, '{}')".format(*row))
+        print(row)
     # Clean up
     cur.close()
     db.close()
