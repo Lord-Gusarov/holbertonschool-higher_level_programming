@@ -5,7 +5,7 @@ import MySQLdb
 
 if __name__ == '__main__':
     user, passwd, db_name = sys.argv[1:4]
-    db = MySQLdb.connect('localhost', user, passwd, db_name)
+    db = MySQLdb.connect('localhost', user, passwd, db_name, 3306)
     cur = db.cursor()
     # Now we are ready for a query
     cur.execute("SELECT * FROM states "
