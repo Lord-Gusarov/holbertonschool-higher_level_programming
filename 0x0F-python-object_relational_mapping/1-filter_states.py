@@ -9,8 +9,8 @@ if __name__ == '__main__':
     cur = db.cursor()
     # Now we are ready for a query
     cur.execute("SELECT * FROM states "
-                "WHERE name LIKE 'N%' "
-                "ORDER BY states.id")
+                "WHERE name LIKE BINARY 'N%' "
+                "ORDER BY id")
     rows = cur.fetchall()
     for row in rows:
         print(row)
