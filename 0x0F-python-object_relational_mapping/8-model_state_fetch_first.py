@@ -14,7 +14,7 @@ if __name__ == "__main__":
     session = orm.sessionmaker(bind=engine)()
 
     first = session.query(State).order_by(State.id).first()
-    out = '' if first is None else '{}: {}'.format(first.id, first.name)
+    out = 'Nothing' if first is None else '{}: {}'.format(first.id, first.name)
     print(out)
 
     session.close()
