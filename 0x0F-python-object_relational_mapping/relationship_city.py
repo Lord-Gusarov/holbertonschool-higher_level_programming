@@ -7,7 +7,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from relationship_state import Base
 
 
-
 class City(Base):
     """
     Class that links to MySQL table 'cities'.
