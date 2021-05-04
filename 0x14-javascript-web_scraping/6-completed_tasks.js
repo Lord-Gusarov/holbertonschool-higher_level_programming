@@ -11,11 +11,8 @@ request(url, (err, res, body) => {
   const taskDict = {};
   for (const task of tasks) {
     if (task.completed) {
-      if (task.userId in taskDict) {
-        taskDict[task.userId]++;
-      } else {
-        taskDict[task.userId] = 1;
-      }
+      const id = task.userId;
+      taskDict[id] = (taskDict[id] + 1 || 1);
     }
   }
   console.log(taskDict);
